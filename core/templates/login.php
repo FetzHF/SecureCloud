@@ -36,7 +36,9 @@
 			<label for="password" class="infield"><?php p($l->t('Password')); ?></label>
 			<img class="svg" id="password-icon" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
 		</p>
-
+		<a id="register" class="warning" href="">
+		<?php p($l->t('Need an Account? Register!')); ?>
+		</a>
 		<?php if (isset($_['invalidpassword']) && ($_['invalidpassword'])): ?>
 		<a id="lost-password" class="warning" href="">
 			<?php p($l->t('Forgot your password? Reset it!')); ?>
