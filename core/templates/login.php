@@ -36,7 +36,7 @@
 			<label for="password" class="infield"><?php p($l->t('Password')); ?></label>
 			<img class="svg" id="password-icon" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
 		</p>
-		<a id="register" class="warning" href="">
+		<a id="register" class="warning" href="register.php?>">
 		<?php p($l->t('Need an Account? Register!')); ?>
 		</a>
 		<?php if (isset($_['invalidpassword']) && ($_['invalidpassword'])): ?>
@@ -51,6 +51,9 @@
 		<input type="hidden" name="timezone-offset" id="timezone-offset"/>
 		<input type="hidden" name="requesttoken" value="<?php p($_['requesttoken']) ?>" />
 		<input type="submit" id="submit" class="login primary" value="<?php p($l->t('Log in')); ?>" disabled="disabled"/>
+		<!--SecureCloud-->
+
+
 	</fieldset>
 </form>
 <?php if (!empty($_['alt_login'])) { ?>
@@ -60,6 +63,7 @@
 		<ul>
 			<?php foreach($_['alt_login'] as $login): ?>
 				<li><a class="button" href="<?php print_unescaped($login['href']); ?>" ><?php p($login['name']); ?></a></li>
+			
 			<?php endforeach; ?>
 		</ul>
 	</fieldset>
@@ -69,3 +73,4 @@
 <?php
 OCP\Util::addscript('core', 'visitortimezone');
 OCP\Util::addScript('core', 'lostpassword');
+
