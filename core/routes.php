@@ -13,10 +13,24 @@ $application->registerRoutes($this, array('routes' => array(
 		array('name' => 'lost#email', 'url' => '/lostpassword/email', 'verb' => 'POST'),
 		array('name' => 'lost#resetform', 'url' => '/lostpassword/reset/form/{token}/{userId}', 'verb' => 'GET'),
 		array('name' => 'lost#setPassword', 'url' => '/lostpassword/set/{token}/{userId}', 'verb' => 'POST'),
+
 	)
 ));
 
 // Post installation check
+OC::$CLASSPATH['OC_Core_Registration_Controller'] = 'core/registration/controller.php';
+$this->create('core_registration_index', '/register/')
+->get()
+->action('OC_Core_Registration_Controller', 'index');
+$this->create('core_registration_send_email', '/register/')
+->post()
+->action('OC_Core_Registration_Controller', 'sendEmail');
+$this->create('core_registration_register_form', '/register/verify/{token}')
+->get()
+->action('OC_Core_Registration_Controller', 'registerForm');
+$this->create('core_registration_create_account', '/register/verify/{token}')
+->post()
+->action('OC_Core_Registration_Controller', 'createAccount');
 
 /** @var $this OCP\Route\IRouter */
 $this->create('post_setup_check', '/post-setup-check')

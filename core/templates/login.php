@@ -36,9 +36,7 @@
 			<label for="password" class="infield"><?php p($l->t('Password')); ?></label>
 			<img class="svg" id="password-icon" src="<?php print_unescaped(image_path('', 'actions/password.svg')); ?>" alt=""/>
 		</p>
-		<a id="register" class="warning" href="register.php?>">
-		<?php p($l->t('Need an Account? Register!')); ?>
-		</a>
+
 		<?php if (isset($_['invalidpassword']) && ($_['invalidpassword'])): ?>
 		<a id="lost-password" class="warning" href="">
 			<?php p($l->t('Forgot your password? Reset it!')); ?>
@@ -73,4 +71,9 @@
 <?php
 OCP\Util::addscript('core', 'visitortimezone');
 OCP\Util::addScript('core', 'lostpassword');
-
+require_once('core/registration/ip.php');
+if(fnmatch("$iprange", $_SERVER['REMOTE_ADDR'])){
+$reglink = OC_Helper::linkToRoute('core_registration_index');
+echo "<p class='info'> New to SecureCloud? <a href='$reglink' target='_blank'> Register! </a></p>";
+return;
+}
