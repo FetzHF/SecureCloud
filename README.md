@@ -15,6 +15,7 @@ IPN
 
 ==Install==
 --Apache--
+
 1. Have required OwnCloud dependencies - php + mysql
 2. Move everything into working directory. (/var/www/html or /var/www normally)
 3. Install by visiting working directory in browser (use browser installation)
